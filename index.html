@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="New Poona Bakery - Serving Pune since 1959. Browse our iconic baked delights." />
+  <meta name="description" content="New Poona Bakery - Serving Pune since 1959. Browse our complete menu." />
   <title>New Poona Bakery – Menu</title>
 
   <!-- Google Fonts: Nunito (warm, round, readable) -->
@@ -249,230 +249,215 @@
     }
 
     /* =========================================================
-       CATEGORY PILLS (filter tabs)
+       STICKY CATEGORY NAV (below hero)
     ========================================================= */
-    .category-bar {
-      background: var(--white);
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+    .category-nav {
       position: sticky;
-      top: 52px;
+      top: 52px; /* Below main navbar */
       z-index: 90;
+      background: var(--white);
+      border-bottom: 2px solid rgba(222, 42, 27, 0.1);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
 
     .category-scroll {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       overflow-x: auto;
-      padding: 0 20px;
+      padding: 14px 20px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
     }
     .category-scroll::-webkit-scrollbar { display: none; }
 
-    .cat-pill {
+    .cat-link {
       flex: 0 0 auto;
       background: var(--gray-light);
       color: var(--text-soft);
       border: none;
       border-radius: 50px;
-      padding: 8px 18px;
-      font-size: 0.82rem;
+      padding: 10px 20px;
+      font-size: 0.85rem;
       font-weight: 700;
       font-family: 'Nunito', sans-serif;
       cursor: pointer;
       transition: all 0.2s ease;
       white-space: nowrap;
       scroll-snap-align: start;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    .cat-pill.active,
-    .cat-pill:active {
+    .cat-link.active,
+    .cat-link:active {
       background: var(--red);
       color: #fff;
     }
 
-    .cat-pill:hover:not(.active) {
+    .cat-link:hover:not(.active) {
       background: var(--red-light);
       color: var(--red);
     }
 
     /* =========================================================
-       PRODUCTS SECTION
+       MENU SECTION
     ========================================================= */
-    .products-section {
+    .menu-section {
       background: var(--cream);
-      padding: 36px 0 48px;
+      padding: 24px 0 48px;
     }
 
-    .products-list {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
+    /* Category block */
+    .category-block {
+      margin-bottom: 32px;
+      scroll-margin-top: 120px; /* offset for sticky headers */
     }
 
-    /* ─── PRODUCT CARD ─── */
-    .product-card {
+    /* Category Header (clickable to expand/collapse) */
+    .category-header {
       background: var(--white);
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
-      position: relative;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      /* Scroll animation start state */
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    /* Visible state (added by JS) */
-    .product-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Desktop hover lift */
-    @media (hover: hover) {
-      .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-      }
-    }
-
-    /* ─── Product Image Container ─── */
-    .card-img-wrap {
-      width: 100%;
-      height: 200px;
-      position: relative;
-      overflow: hidden;
-      background: var(--gray-light);
-    }
-
-    .card-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    @media (hover: hover) {
-      .product-card:hover .card-img-wrap img {
-        transform: scale(1.04);
-      }
-    }
-
-    /* Skeleton loader overlay */
-    .skeleton-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
-      background-size: 200% 100%;
-      animation: skeleton-shimmer 1.4s infinite;
-      z-index: 1;
-    }
-
-    @keyframes skeleton-shimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .skeleton-overlay.hidden {
-      display: none;
-    }
-
-    /* ─── Badges on Card Image ─── */
-    .card-badges {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      right: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* Bestseller tag */
-    .badge-bestseller {
-      background: var(--yellow);
-      color: #5a4200;
-      font-size: 0.68rem;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-    }
-
-    /* Veg icon */
-    .badge-veg {
-      width: 22px;
-      height: 22px;
-      border-radius: 4px;
-      border: 2px solid #2e7d32;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .badge-veg-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #2e7d32;
-    }
-
-    /* ─── Card Body ─── */
-    .card-body {
-      padding: 18px 18px 20px;
-    }
-
-    .card-name {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 5px;
-      letter-spacing: -0.2px;
-    }
-
-    .card-desc {
-      font-size: 0.85rem;
-      color: var(--text-soft);
-      line-height: 1.5;
-      margin-bottom: 14px;
-    }
-
-    .card-footer {
+      padding: 18px 20px;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      margin-bottom: 12px;
+      user-select: none;
     }
 
-    .card-price {
+    .category-header:active {
+      transform: scale(0.99);
+    }
+
+    .category-header.collapsed {
+      margin-bottom: 0;
+    }
+
+    .category-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .category-name {
       font-size: 1.25rem;
       font-weight: 900;
-      color: var(--red);
+      color: var(--text);
       letter-spacing: -0.3px;
     }
 
-    .card-price-note {
-      font-size: 0.72rem;
-      color: var(--gray);
+    .category-count {
+      background: var(--yellow-bg);
+      color: #7a5a00;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(246,207,24,0.4);
+    }
+
+    .category-toggle {
+      font-size: 1.4rem;
+      color: var(--red);
+      transition: transform 0.3s ease;
+      line-height: 1;
+    }
+
+    .category-header.collapsed .category-toggle {
+      transform: rotate(-90deg);
+    }
+
+    /* Product list inside category */
+    .product-list {
+      background: var(--white);
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      max-height: 2000px;
+      opacity: 1;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+
+    .product-list.collapsed {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    /* Individual product item */
+    .product-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: background 0.2s ease;
+    }
+
+    .product-item:last-child {
+      border-bottom: none;
+    }
+
+    .product-item:active {
+      background: var(--gray-light);
+    }
+
+    @media (hover: hover) {
+      .product-item:hover {
+        background: var(--gray-light);
+      }
+    }
+
+    .product-info {
+      flex: 1;
+      min-width: 0; /* allow text truncation */
+    }
+
+    .product-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+      letter-spacing: -0.1px;
+    }
+
+    .product-uom {
+      font-size: 0.75rem;
+      color: var(--text-soft);
       font-weight: 600;
     }
 
-    .card-tag {
-      background: var(--yellow-bg);
-      color: #7a5a00;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 20px;
-      border: 1px solid rgba(246,207,24,0.4);
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--red);
+      letter-spacing: -0.2px;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    /* Veg icon badge (small) */
+    .veg-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid #2e7d32;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .veg-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2e7d32;
     }
 
     /* =========================================================
@@ -481,12 +466,6 @@
     .about-section {
       background: var(--white);
       text-align: center;
-    }
-
-    .about-icon {
-      font-size: 2.4rem;
-      margin-bottom: 14px;
-      display: block;
     }
 
     .about-text {
@@ -536,14 +515,6 @@
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-md);
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .store-card.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* Map placeholder */
@@ -824,39 +795,11 @@
     }
 
     /* =========================================================
-       SCROLL ENTRANCE ANIMATION
-    ========================================================= */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Staggered delays for product cards */
-    .product-card:nth-child(1) { transition-delay: 0.05s; }
-    .product-card:nth-child(2) { transition-delay: 0.12s; }
-    .product-card:nth-child(3) { transition-delay: 0.18s; }
-    .product-card:nth-child(4) { transition-delay: 0.24s; }
-    .product-card:nth-child(5) { transition-delay: 0.30s; }
-    .product-card:nth-child(6) { transition-delay: 0.36s; }
-
-    /* Product card transition */
-    .product-card {
-      transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.25s ease;
-    }
-
-    /* =========================================================
        DESKTOP BREAKPOINTS (non-mobile enhancements)
     ========================================================= */
     @media (min-width: 640px) {
       :root { --max-width: 560px; }
       .hero-title { font-size: 2.4rem; }
-      .card-img-wrap { height: 240px; }
     }
 
     @media (min-width: 960px) {
@@ -870,16 +813,16 @@
   <!-- =========================================================
        TOP NAVBAR
   ========================================================= -->
-  <!-- <nav class="navbar" role="navigation" aria-label="Site navigation">
+  <nav class="navbar" role="navigation" aria-label="Site navigation">
     <div class="navbar-inner">
-      <span class="navbar-brand">🧁 New Poona Bakery</span>
+      <span class="navbar-brand">New Poona Bakery</span>
       <span class="navbar-tag">Est. 1959</span>
     </div>
-  </nav> -->
+  </nav>
 
 
   <!-- =========================================================
-       1. HERO SECTION
+       HERO SECTION
   ========================================================= -->
   <section class="hero" aria-label="Hero Banner">
     <div class="container">
@@ -887,24 +830,19 @@
       <!-- Logo -->
       <div class="hero-logo-wrap">
         <div class="hero-logo-bg">
-          <!--
-            Replace logo.png with your actual logo file.
-            If missing, the JS will show a text fallback.
-          -->
           <img
-            src="img/New Poona Bakery Logo.png"
+            src="logo.png"
             alt="New Poona Bakery Logo"
             id="hero-logo"
             onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';"
           />
-          <!-- Fallback shown when logo.png is not found -->
           <div class="logo-fallback" id="logo-fallback" style="display:none;" aria-hidden="true">NPB</div>
         </div>
       </div>
 
-      <span class="hero-badge">✦ Pune's Favourite Since 1959 ✦</span>
-      <!-- <h1 class="hero-title">New Poona<br>Bakery Menu</h1> -->
-      <!-- <p class="hero-tagline">🍞 Serving Pune since 1959</p> -->
+      <span class="hero-badge">Pune's Favourite Since 1959</span>
+      <h1 class="hero-title">New Poona<br>Bakery Menu</h1>
+      <p class="hero-tagline">Serving Pune since 1959</p>
 
       <div class="hero-divider">
         <span>⬥⬥⬥</span>
@@ -917,234 +855,537 @@
 
 
   <!-- =========================================================
-       CATEGORY PILL FILTER BAR
+       STICKY CATEGORY NAVIGATION
   ========================================================= -->
-  <!-- <div class="category-bar" role="navigation" aria-label="Menu categories">
-    <div class="category-scroll"> -->
-      <!-- Categories – clicking filters the product cards by data-category -->
-      <!-- <button class="cat-pill active" data-category="all">All Items</button>
-      <button class="cat-pill" data-category="breads">🍞 Breads</button>
-      <button class="cat-pill" data-category="cakes">🎂 Cakes</button>
-      <button class="cat-pill" data-category="cookies">🍪 Cookies</button>
-      <button class="cat-pill" data-category="pastries">🥐 Pastries</button>
-      <button class="cat-pill" data-category="savoury">🧆 Savoury</button>
+  <nav class="category-nav" role="navigation" aria-label="Menu categories">
+    <div class="category-scroll">
+      <a href="#pastry" class="cat-link">Pastry</a>
+      <a href="#rolls" class="cat-link">Rolls/Burgers</a>
+      <a href="#puffs" class="cat-link">Puffs</a>
+      <a href="#premium" class="cat-link">Premium Pastry</a>
+      <a href="#tea-cakes" class="cat-link">Tea Cakes</a>
+      <a href="#cookies" class="cat-link">Cookies</a>
+      <a href="#cream-rolls" class="cat-link">Cream Rolls</a>
     </div>
-  </div> -->
+  </nav>
 
 
   <!-- =========================================================
-       2. PRODUCTS SECTION
-       ─────────────────────────────────────────────
-       To add a product: duplicate a .product-card div
-       and update: data-category, image src, name, desc, price, tags
+       MENU SECTION - All Categories
   ========================================================= -->
-  <section class="products-section" aria-labelledby="menu-title">
+  <section class="menu-section" aria-label="Full Menu">
     <div class="container">
 
-      <h2 class="section-title" id="menu-title">🎉 Our Iconic Menu</h2>
-      <p class="section-subtitle">Freshly baked with love every morning</p>
-
-      <div class="products-list" id="products-list">
-
-        <!--
-          ═══════════════════════════════
-          PRODUCT CARD TEMPLATE
-          ───────────────────────────────
-          data-category: all | breads | cakes | cookies | pastries | savoury
-          Remove class="badge-bestseller" if not a bestseller
-          ═══════════════════════════════
-        -->
-
-        <!-- CARD 1: Veg Puff -->
-        <article class="product-card" data-category="cookies" aria-label="Shrewsbury Biscuits">
-          <div class="card-img-wrap">
-            <!-- Skeleton loader (hides when image loads) -->
-            <div class="skeleton-overlay" aria-hidden="true"></div>
-            <img
-              src="img/Veg Puff.jpg"
-              alt="Veg Puff"
-              loading="lazy"
-              onload="this.previousElementSibling.classList.add('hidden')"
-              onerror="this.previousElementSibling.classList.add('hidden'); this.src='https://placehold.co/600x300/f9e5c5/DE2A1B?text=Shrewsbury+Biscuits'"
-            />
-            <!-- Badges over image -->
-            <div class="card-badges">
-              <span class="badge-bestseller">⭐ Bestseller</span>
-              <span class="badge-veg" title="Vegetarian"><div class="badge-veg-dot"></div></span>
-            </div>
+      <!-- ═══════════════════════════════════════════════════════
+           CATEGORY 1: REGULAR PASTRY (TRIANGLE)
+      ═══════════════════════════════════════════════════════ -->
+      <div class="category-block" id="pastry">
+        <div class="category-header" onclick="toggleCategory(this)">
+          <div class="category-header-left">
+            <h2 class="category-name">Regular Pastry (Triangle)</h2>
+            <span class="category-count">2 Items</span>
           </div>
-          <div class="card-body">
-            <h3 class="card-name">Veg Puff</h3>
-            <p class="card-desc">
-              Crispy, flaky puff pastry filled with spiced potato and vegetables. The perfect hot snack for any time of day.
-            </p>
-            <div class="card-footer">
-              <div>
-                <div class="card-price">₹ 22</div>
-                <div class="card-price-note">per piece</div>
+          <span class="category-toggle">▼</span>
+        </div>
+        <div class="product-list">
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Chocolate Royal Pastry
+                <span class="veg-badge"><span class="veg-dot"></span></span>
               </div>
-              <span class="card-tag">Puff</span>
+              <div class="product-uom">1PC</div>
             </div>
+            <div class="product-price">₹80</div>
           </div>
-        </article>
-
-
-        <!-- CARD 2: Paneer Puff -->
-        <article class="product-card" data-category="cakes" aria-label="Plum Cake">
-          <div class="card-img-wrap">
-            <div class="skeleton-overlay" aria-hidden="true"></div>
-            <img
-              src="img/Paneer Puff.avif"
-              alt="Classic Plum Cake"
-              loading="lazy"
-              onload="this.previousElementSibling.classList.add('hidden')"
-              onerror="this.previousElementSibling.classList.add('hidden'); this.src='https://placehold.co/600x300/fde8e8/DE2A1B?text=Plum+Cake'"
-            />
-            <div class="card-badges">
-              <span class="badge-bestseller">⭐ Bestseller</span>
-              <span class="badge-veg" title="Vegetarian"><div class="badge-veg-dot"></div></span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-name">Paneer Puff</h3>
-            <p class="card-desc">
-              Golden, buttery layers stuffed with soft, lightly spiced paneer. Rich, satisfying, and impossible to resist.
-            </p>
-            <div class="card-footer">
-              <div>
-                <div class="card-price">₹ 25</div>
-                <div class="card-price-note">per piece</div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Rasmalai Pastry
+                <span class="veg-badge"><span class="veg-dot"></span></span>
               </div>
-              <span class="card-tag">Puff</span>
+              <div class="product-uom">1PC</div>
             </div>
+            <div class="product-price">₹80</div>
           </div>
-        </article>
+        </div>
+      </div>
 
 
-        <!-- CARD 3: Shrewsbury Biscuits -->
-        <article class="product-card" data-category="breads" aria-label="Brown Bread">
-          <div class="card-img-wrap">
-            <div class="skeleton-overlay" aria-hidden="true"></div>
-            <img
-              src="img/Shrewsbury Biscuit.jpg"
-              alt="Shrewsbury Biscuits"
-              loading="lazy"
-              onload="this.previousElementSibling.classList.add('hidden')"
-              onerror="this.previousElementSibling.classList.add('hidden'); this.src='https://placehold.co/600x300/fffbe6/DE2A1B?text=Brown+Bread'"
-            />
-            <div class="card-badges">
-              <!-- No bestseller badge here — just veg icon -->
-              <span></span>
-              <span class="badge-veg" title="Vegetarian"><div class="badge-veg-dot"></div></span>
-            </div>
+      <!-- ═══════════════════════════════════════════════════════
+           CATEGORY 2: ROLLS/BURGERS/SANDWICHES
+      ═══════════════════════════════════════════════════════ -->
+      <div class="category-block" id="rolls">
+        <div class="category-header" onclick="toggleCategory(this)">
+          <div class="category-header-left">
+            <h2 class="category-name">Rolls/Burgers/Sandwiches</h2>
+            <span class="category-count">7 Items</span>
           </div>
-          <div class="card-body">
-            <h3 class="card-name">Shrewsbury Biscuit</h3>
-            <p class="card-desc">
-              Pune's most iconic biscuit since 1959. Melt-in-your-mouth butter cookies. Simple, timeless, and perfect with chai.
-            </p>
-            <div class="card-footer">
-              <div>
-                <div class="card-price">₹ 150</div>
-                <div class="card-price-note">per 200gms</div>
+          <span class="category-toggle">▼</span>
+        </div>
+        <div class="product-list">
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Manchurian Roll
+                <span class="veg-badge"><span class="veg-dot"></span></span>
               </div>
-              <span class="card-tag">Biscuits</span>
+              <div class="product-uom">1PC</div>
             </div>
+            <div class="product-price">₹50</div>
           </div>
-        </article>
-
-
-        <!-- CARD 4: Chocalate Pastry -->
-        <article class="product-card" data-category="pastries" aria-label="Khari Biscuit">
-          <div class="card-img-wrap">
-            <div class="skeleton-overlay" aria-hidden="true"></div>
-            <img
-              src="img/Chocalate Pastry.jpg"
-              alt="Khari Biscuit"
-              loading="lazy"
-              onload="this.previousElementSibling.classList.add('hidden')"
-              onerror="this.previousElementSibling.classList.add('hidden'); this.src='https://placehold.co/600x300/e8f4f8/DE2A1B?text=Khari+Biscuit'"
-            />
-            <div class="card-badges">
-              <span class="badge-bestseller">⭐ Bestseller</span>
-              <span class="badge-veg" title="Vegetarian"><div class="badge-veg-dot"></div></span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-name">Chocalate Pastry</h3>
-            <p class="card-desc">
-              Moist chocolate sponge layered with smooth chocolate cream. Rich, indulgent, and just the right size.
-            </p>
-            <div class="card-footer">
-              <div>
-                <div class="card-price">₹ 60</div>
-                <div class="card-price-note">per slice</div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Noodles Roll
+                <span class="veg-badge"><span class="veg-dot"></span></span>
               </div>
-              <span class="card-tag">Pastries</span>
+              <div class="product-uom">1PC</div>
             </div>
+            <div class="product-price">₹50</div>
           </div>
-        </article>
-
-
-        <!-- CARD 5: Vanilla Cream Roll -->
-        <article class="product-card" data-category="savoury" aria-label="Bread Pakoda">
-          <div class="card-img-wrap">
-            <div class="skeleton-overlay" aria-hidden="true"></div>
-            <img
-              src="img/Vanilla Cream Roll.jpg"
-              alt="Vanilla Cream Roll"
-              loading="lazy"
-              onload="this.previousElementSibling.classList.add('hidden')"
-              onerror="this.previousElementSibling.classList.add('hidden'); this.src='https://placehold.co/600x300/f0ffe0/DE2A1B?text=Bread+Pakoda'"
-            />
-            <div class="card-badges">
-              <span></span>
-              <span class="badge-veg" title="Vegetarian"><div class="badge-veg-dot"></div></span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-name">Vanilla Cream Roll</h3>
-            <p class="card-desc">
-              Soft bread swirled with sweet vanilla cream. Light, fluffy, and a nostalgic favourite for all ages.
-            </p>
-            <div class="card-footer">
-              <div>
-                <div class="card-price">₹ 85</div>
-                <div class="card-price-note">Pack of 6</div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Panner Masala Roll
+                <span class="veg-badge"><span class="veg-dot"></span></span>
               </div>
-              <span class="card-tag">Cream Roll</span>
+              <div class="product-uom">1PC</div>
             </div>
+            <div class="product-price">₹50</div>
           </div>
-        </article>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Panner Sandwich
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹40</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Veg Club Sandwich
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹35</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Veg Cheese Sandwich
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹35</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Veg Burger
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹80</div>
+          </div>
+        </div>
+      </div>
 
 
-        <!-- ═══════════════════════════════
-             ADD MORE PRODUCT CARDS HERE
-             Just copy one card block above
-             and update the content inside
-        ═══════════════════════════════ -->
+      <!-- ═══════════════════════════════════════════════════════
+           CATEGORY 3: PUFFS
+      ═══════════════════════════════════════════════════════ -->
+      <div class="category-block" id="puffs">
+        <div class="category-header" onclick="toggleCategory(this)">
+          <div class="category-header-left">
+            <h2 class="category-name">Puffs</h2>
+            <span class="category-count">5 Items</span>
+          </div>
+          <span class="category-toggle">▼</span>
+        </div>
+        <div class="product-list">
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Khari Manchurian Pattice
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹30</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Khari Mushroom Pattice
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹30</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Khari Noodles Pattice
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹30</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Khari Panner Chilly Pattice
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹30</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Khari Veg Pattices
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹25</div>
+          </div>
+        </div>
+      </div>
 
-      </div><!-- /products-list -->
+
+      <!-- ═══════════════════════════════════════════════════════
+           CATEGORY 4: PREMIUM PASTRY
+      ═══════════════════════════════════════════════════════ -->
+      <div class="category-block" id="premium">
+        <div class="category-header" onclick="toggleCategory(this)">
+          <div class="category-header-left">
+            <h2 class="category-name">Premium Pastry</h2>
+            <span class="category-count">12 Items</span>
+          </div>
+          <span class="category-toggle">▼</span>
+        </div>
+        <div class="product-list">
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Baked Cheese Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹200</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Nutella Cheese Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹200</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Biscoff Cheese Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹200</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Hazelnut Brownie
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹120</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Double Chocolate Brownie
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹120</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Chocolate Doughnut
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹90</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Kitkat Doughnut
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹110</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Vanila Cup Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹60</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Chocolate Cup Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹60</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Chocolate Mouse
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹190</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Milk Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹190</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Tiramisu
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹190</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════════════════════════════════════════════════
+           CATEGORY 5: TEA CAKES
+      ═══════════════════════════════════════════════════════ -->
+      <div class="category-block" id="tea-cakes">
+        <div class="category-header" onclick="toggleCategory(this)">
+          <div class="category-header-left">
+            <h2 class="category-name">Tea Cakes</h2>
+            <span class="category-count">6 Items</span>
+          </div>
+          <span class="category-toggle">▼</span>
+        </div>
+        <div class="product-list">
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Pure Mawa
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">150 GM</div>
+            </div>
+            <div class="product-price">₹170</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Blueberry Sponge Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">150 GM</div>
+            </div>
+            <div class="product-price">₹170</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Banana Heazelnut Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">150 GM</div>
+            </div>
+            <div class="product-price">₹170</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Coffee Walnut Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">150 GM</div>
+            </div>
+            <div class="product-price">₹170</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Jowar Chocolate Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">150 GM</div>
+            </div>
+            <div class="product-price">₹200</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Whole Wheat Nuts Cake
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">150 GM</div>
+            </div>
+            <div class="product-price">₹200</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════════════════════════════════════════════════
+           CATEGORY 6: COOKIES
+      ═══════════════════════════════════════════════════════ -->
+      <div class="category-block" id="cookies">
+        <div class="category-header" onclick="toggleCategory(this)">
+          <div class="category-header-left">
+            <h2 class="category-name">Cookies</h2>
+            <span class="category-count">4 Items</span>
+          </div>
+          <span class="category-toggle">▼</span>
+        </div>
+        <div class="product-list">
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Shrewsbury Cookies
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">200 GM</div>
+            </div>
+            <div class="product-price">₹150</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Chocochips Cookies
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">200 GM</div>
+            </div>
+            <div class="product-price">₹110</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Nachani Cookies
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">200 GM</div>
+            </div>
+            <div class="product-price">₹110</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Whole Wheat Cookies
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">200 GM</div>
+            </div>
+            <div class="product-price">₹110</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════════════════════════════════════════════════
+           CATEGORY 7: CREAM ROLLS
+      ═══════════════════════════════════════════════════════ -->
+      <div class="category-block" id="cream-rolls">
+        <div class="category-header" onclick="toggleCategory(this)">
+          <div class="category-header-left">
+            <h2 class="category-name">Cream Rolls</h2>
+            <span class="category-count">2 Items</span>
+          </div>
+          <span class="category-toggle">▼</span>
+        </div>
+        <div class="product-list">
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Vanilla Cream Roll
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹14</div>
+          </div>
+          <div class="product-item">
+            <div class="product-info">
+              <div class="product-name">
+                Chocolate Cream Roll
+                <span class="veg-badge"><span class="veg-dot"></span></span>
+              </div>
+              <div class="product-uom">1PC</div>
+            </div>
+            <div class="product-price">₹14</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
 
   <!-- =========================================================
-       3. ABOUT SECTION
+       ABOUT SECTION
   ========================================================= -->
   <section class="about-section" aria-labelledby="about-title">
     <div class="container">
 
-      <!-- <span class="about-icon" aria-hidden="true">🏪</span> -->
-      <h2 class="section-title fade-up" id="about-title">Our Story</h2>
-      <p class="section-subtitle fade-up" style="transition-delay:0.07s">A legacy baked in every bite</p>
+      <h2 class="section-title" id="about-title">Our Story</h2>
+      <p class="section-subtitle">A legacy baked in every bite</p>
 
-      <p class="about-text fade-up" style="transition-delay:0.14s">
-        New Poona Bakery has been serving Pune with iconic baked delights since 1959, known for freshness, taste and tradition. Three generations of passion and craft in every loaf, biscuit, and cake we make.
+      <p class="about-text">
+        New Poona Bakery has been serving Pune with iconic baked delights since 1959, known for freshness, taste and tradition. Three generations of passion and craft — in every loaf, biscuit, and cake we make.
       </p>
 
       <!-- Key stats -->
-      <div class="about-stats fade-up" style="transition-delay:0.2s" role="list">
+      <div class="about-stats" role="list">
         <div class="stat-item" role="listitem">
           <span class="stat-number">65+</span>
           <span class="stat-label">Years of Baking</span>
@@ -1164,15 +1405,15 @@
 
 
   <!-- =========================================================
-       4. VISIT OUR STORE SECTION
+       VISIT OUR STORE SECTION
   ========================================================= -->
   <section class="store-section" aria-labelledby="store-title">
     <div class="container">
 
-      <h2 class="section-title fade-up" id="store-title">Visit Our Store</h2>
-      <p class="section-subtitle fade-up" style="transition-delay:0.07s">200+ fresh products waiting for you!</p>
+      <h2 class="section-title" id="store-title">Visit Our Store</h2>
+      <p class="section-subtitle">200+ fresh products waiting for you!</p>
 
-      <div class="store-card fade-up" style="transition-delay:0.14s">
+      <div class="store-card">
 
         <!-- Map visual placeholder -->
         <div class="store-map-placeholder" aria-hidden="true">
@@ -1182,20 +1423,12 @@
         <div class="store-body">
           <div class="store-name">New Poona Bakery</div>
 
-          <!--
-            UPDATE ADDRESS HERE:
-            Replace with the actual store address and Google Maps link
-          -->
           <div class="store-address">
             <strong>Main Branch</strong>
             123, Example Street, Camp Area,<br />
             Pune – 411001, Maharashtra, India
           </div>
 
-          <!--
-            UPDATE: Replace href="#" with the actual Google Maps share URL
-            Example: https://maps.app.goo.gl/XXXXXXX
-          -->
           <a
             href="#"
             class="btn-maps"
@@ -1203,7 +1436,6 @@
             rel="noopener noreferrer"
             aria-label="Open store location in Google Maps"
           >
-            <!-- Google Maps pin icon -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
               <circle cx="12" cy="10" r="3"/>
@@ -1213,7 +1445,7 @@
 
           <!-- Store timings -->
           <div class="store-hours" aria-label="Store hours">
-            <div class="hours-title">🕐 Store Hours</div>
+            <div class="hours-title">Store Hours</div>
             <div class="hours-row">
               <span class="hours-day">Mon – Sat</span>
               <span class="hours-time hours-open">7:00 AM – 9:00 PM</span>
@@ -1225,26 +1457,23 @@
           </div>
 
         </div>
-      </div><!-- /store-card -->
+      </div>
     </div>
   </section>
 
 
   <!-- =========================================================
-       5. SOCIAL & REVIEW SECTION
+       SOCIAL & REVIEW SECTION
   ========================================================= -->
   <section class="social-section" aria-labelledby="social-title">
     <div class="container">
 
-      <h2 class="section-title fade-up" id="social-title">Stay Connected</h2>
-      <p class="section-subtitle fade-up" style="transition-delay:0.07s">Follow us for fresh updates every day</p>
+      <h2 class="section-title" id="social-title">Stay Connected</h2>
+      <p class="section-subtitle">Follow us for fresh updates every day</p>
 
       <!-- Social icons -->
-      <div class="social-icons fade-up" style="transition-delay:0.14s" role="list">
+      <div class="social-icons" role="list">
 
-        <!--
-          UPDATE: Replace href="#" with your actual Instagram, Facebook, Google Maps links
-        -->
         <a
           href="#"
           class="social-btn"
@@ -1254,7 +1483,6 @@
           role="listitem"
         >
           <div class="social-icon-circle instagram">
-            <!-- Instagram icon (inline SVG) -->
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <rect x="2" y="2" width="20" height="20" rx="6" ry="6" stroke="#c0306a" stroke-width="2" fill="none"/>
               <circle cx="12" cy="12" r="4" stroke="#c0306a" stroke-width="2" fill="none"/>
@@ -1273,7 +1501,6 @@
           role="listitem"
         >
           <div class="social-icon-circle facebook">
-            <!-- Facebook icon -->
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#1877f2" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -1290,7 +1517,6 @@
           role="listitem"
         >
           <div class="social-icon-circle google">
-            <!-- Google "G" icon -->
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
               <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -1301,19 +1527,15 @@
           <span class="social-label">Google</span>
         </a>
 
-      </div><!-- /social-icons -->
-
+      </div>
 
       <!-- Google Review CTA Card -->
-      <div class="review-cta fade-up" style="transition-delay:0.22s">
+      <div class="review-cta">
         <div class="review-stars" aria-label="5 star rating" role="img">⭐⭐⭐⭐⭐</div>
         <div class="review-heading">Love our bakes? Tell the world!</div>
         <p class="review-sub">
-          Your review helps us serve Pune better.<br />Takes only 30 seconds - means the world to us!
+          Your review helps us serve Pune better.<br />Takes only 30 seconds — means the world to us!
         </p>
-        <!--
-          UPDATE: Replace href="#" with your actual Google Review link
-        -->
         <a
           href="#"
           class="btn-review"
@@ -1321,7 +1543,6 @@
           rel="noopener noreferrer"
           aria-label="Leave us a Google review"
         >
-          <!-- Google G mini icon -->
           <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -1342,8 +1563,8 @@
   <footer role="contentinfo">
     <strong>New Poona Bakery</strong>
     <span class="wavy-divider" aria-hidden="true">✦ ✦ ✦</span>
-    <p>© <span class="footer-year">1959</span> – 2025 &nbsp;·&nbsp; Pune, Maharashtra</p>
-    <p style="margin-top:6px; font-size:0.72rem; opacity:0.7;">Made with ❤️ &amp; by IdeaClicks</p>
+    <p>© <span class="footer-year">1959</span> – 2025 · Pune, Maharashtra</p>
+    <p style="margin-top:6px; font-size:0.72rem; opacity:0.7;">Made with love & baked with tradition</p>
   </footer>
 
 
@@ -1354,92 +1575,49 @@
     'use strict';
 
     /* ─────────────────────────────────────────────
-       1. INTERSECTION OBSERVER – Scroll Animations
-       Adds class 'visible' when elements enter viewport
+       1. TOGGLE CATEGORY (Expand/Collapse)
     ──────────────────────────────────────────────── */
-    (function initScrollAnimations() {
-      const targets = document.querySelectorAll('.product-card, .fade-up, .store-card');
-
-      // If browser doesn't support IntersectionObserver, show everything immediately
-      if (!('IntersectionObserver' in window)) {
-        targets.forEach(el => el.classList.add('visible'));
-        return;
+    function toggleCategory(header) {
+      header.classList.toggle('collapsed');
+      const productList = header.nextElementSibling;
+      if (productList) {
+        productList.classList.toggle('collapsed');
       }
+    }
 
+    /* ─────────────────────────────────────────────
+       2. STICKY CATEGORY NAV - Active State on Scroll
+    ──────────────────────────────────────────────── */
+    (function initCategoryNavHighlight() {
+      const catLinks = document.querySelectorAll('.cat-link');
+      const categoryBlocks = document.querySelectorAll('.category-block');
+
+      if (!catLinks.length || !categoryBlocks.length) return;
+
+      // Intersection observer to detect which category is in view
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target); // animate once only
+              const id = entry.target.getAttribute('id');
+              // Remove active from all
+              catLinks.forEach(link => link.classList.remove('active'));
+              // Add active to matching link
+              const activeLink = document.querySelector(`.cat-link[href="#${id}"]`);
+              if (activeLink) {
+                activeLink.classList.add('active');
+              }
             }
           });
         },
         {
-          threshold: 0.12,       // trigger when 12% of element is visible
-          rootMargin: '0px 0px -40px 0px'  // slightly before bottom of viewport
+          threshold: 0.3,
+          rootMargin: '-140px 0px -50% 0px'
         }
       );
 
-      targets.forEach(el => observer.observe(el));
+      categoryBlocks.forEach(block => observer.observe(block));
     })();
-
-
-    /* ─────────────────────────────────────────────
-       2. CATEGORY FILTER
-       Filters product cards based on data-category
-    ──────────────────────────────────────────────── */
-    (function initCategoryFilter() {
-      const pills     = document.querySelectorAll('.cat-pill');
-      const cards     = document.querySelectorAll('.product-card');
-
-      /**
-       * Filter cards by category.
-       * @param {string} category - Category value or 'all'
-       */
-      function filterProducts(category) {
-        cards.forEach(card => {
-          const cardCategory = card.getAttribute('data-category');
-          const matches      = category === 'all' || cardCategory === category;
-
-          // Animate out/in with CSS transitions
-          if (matches) {
-            card.style.display = 'block';
-            // Small delay so display:block renders before opacity transition
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                card.style.opacity  = '1';
-                card.style.transform = 'translateY(0)';
-              });
-            });
-          } else {
-            card.style.opacity  = '0';
-            card.style.transform = 'translateY(16px)';
-            // Hide after animation
-            setTimeout(() => {
-              if (card.style.opacity === '0') {
-                card.style.display = 'none';
-              }
-            }, 300);
-          }
-        });
-      }
-
-      pills.forEach(pill => {
-        pill.addEventListener('click', function () {
-          // Update active state
-          pills.forEach(p => p.classList.remove('active'));
-          this.classList.add('active');
-
-          const category = this.getAttribute('data-category');
-          filterProducts(category);
-        });
-      });
-
-      // Ensure all cards are visible on load
-      filterProducts('all');
-    })();
-
 
     /* ─────────────────────────────────────────────
        3. SMOOTH NAVBAR SHADOW ON SCROLL
@@ -1457,18 +1635,14 @@
       }, { passive: true });
     })();
 
-
     /* ─────────────────────────────────────────────
        4. LOGO IMAGE FALLBACK
-       Already handled via onerror in HTML,
-       but this is a safety net.
     ──────────────────────────────────────────────── */
     (function initLogoFallback() {
       const logo = document.getElementById('hero-logo');
       const fallback = document.getElementById('logo-fallback');
       if (!logo || !fallback) return;
 
-      // If image fails to load
       logo.addEventListener('error', function () {
         this.style.display = 'none';
         fallback.style.display = 'flex';
