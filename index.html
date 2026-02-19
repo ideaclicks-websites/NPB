@@ -1671,44 +1671,42 @@ function toggleCategory(header) {
     /* ─────────────────────────────────────────────
        2. STICKY CATEGORY NAV - Active State on Scroll
     ──────────────────────────────────────────────── */
-    (function initCategoryNavHighlight() {
-      const catLinks = document.querySelectorAll('.cat-link');
-      const categoryBlocks = document.querySelectorAll('.category-block');
+ (function initScrollSpy() {
 
-      if (!catLinks.length || !categoryBlocks.length) return;
+  const sections = document.querySelectorAll('.category-block');
+  const navLinks = document.querySelectorAll('.cat-link');
 
-      // Intersection observer to detect which category is in view
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const id = entry.target.getAttribute('id');
-              // Remove active from all
-              catLinks.forEach(link => link.classList.remove('active'));
-              // Add active to matching link
-              const activeLink = document.querySelector(`.cat-link[href="#${id}"]`);
-             if (activeLink) {
-  activeLink.classList.add('active');
+  function setActiveLink() {
 
-  // 🔥 Auto scroll the horizontal nav
-  activeLink.scrollIntoView({
-    behavior: "smooth",
-    inline: "center",
-    block: "nearest"
-  });
-}
+    let current = "";
 
-            }
-          });
-        },
-        {
-        threshold: 0.4,
-          rootMargin: '-120px 0px -40% 0px'
-        }
-      );
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
 
-      categoryBlocks.forEach(block => observer.observe(block));
-    })();
+      if (window.scrollY >= sectionTop - 140) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+
+        link.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest"
+        });
+      }
+    });
+
+  }
+
+  window.addEventListener("scroll", setActiveLink);
+
+})();
 
     /* ─────────────────────────────────────────────
        3. SMOOTH NAVBAR SHADOW ON SCROLL
