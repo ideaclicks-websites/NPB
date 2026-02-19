@@ -253,7 +253,7 @@
     ========================================================= */
     .category-nav {
       position: sticky;
-      top: 52px; /* Below main navbar */
+      top: 0px; /* Below main navbar */
       z-index: 90;
       background: var(--white);
       border-bottom: 2px solid rgba(222, 42, 27, 0.1);
@@ -350,7 +350,7 @@
       letter-spacing: -0.3px;
     }
 
-    .category-count {
+    /* .category-count {
       background: var(--yellow-bg);
       color: #7a5a00;
       font-size: 0.75rem;
@@ -358,7 +358,7 @@
       padding: 3px 10px;
       border-radius: 20px;
       border: 1px solid rgba(246,207,24,0.4);
-    }
+    } */
 
     .category-toggle {
       font-size: 1.4rem;
@@ -634,6 +634,13 @@
     .hours-time { color: var(--text-soft); }
     .hours-open { color: #2e7d32; font-weight: 700; }
 
+    .store-section .container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+
     /* =========================================================
        SOCIAL SECTION
     ========================================================= */
@@ -794,6 +801,16 @@
       margin: 4px 0;
     }
 
+        footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700; /* optional */
+    }
+
+    footer a:hover {
+      text-decoration: underline; /* optional hover effect */
+    }
+
     /* =========================================================
        DESKTOP BREAKPOINTS (non-mobile enhancements)
     ========================================================= */
@@ -813,12 +830,12 @@
   <!-- =========================================================
        TOP NAVBAR
   ========================================================= -->
-  <nav class="navbar" role="navigation" aria-label="Site navigation">
+  <!-- <nav class="navbar" role="navigation" aria-label="Site navigation">
     <div class="navbar-inner">
       <span class="navbar-brand">New Poona Bakery</span>
       <span class="navbar-tag">Est. 1959</span>
     </div>
-  </nav>
+  </nav> -->
 
 
   <!-- =========================================================
@@ -831,7 +848,7 @@
       <div class="hero-logo-wrap">
         <div class="hero-logo-bg">
           <img
-            src="logo.png"
+            src="img/New Poona Bakery Logo.png"
             alt="New Poona Bakery Logo"
             id="hero-logo"
             onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';"
@@ -841,8 +858,8 @@
       </div>
 
       <span class="hero-badge">Pune's Favourite Since 1959</span>
-      <h1 class="hero-title">New Poona<br>Bakery Menu</h1>
-      <p class="hero-tagline">Serving Pune since 1959</p>
+      <!-- <h1 class="hero-title">New Poona<br>Bakery Menu</h1> -->
+      <!-- <p class="hero-tagline">Serving Pune since 1959</p> -->
 
       <div class="hero-divider">
         <span>⬥⬥⬥</span>
@@ -883,9 +900,10 @@
         <div class="category-header" onclick="toggleCategory(this)">
           <div class="category-header-left">
             <h2 class="category-name">Regular Pastry (Triangle)</h2>
-            <span class="category-count">2 Items</span>
+            <!-- <span class="category-count">2 Items</span> -->
           </div>
-          <span class="category-toggle">▼</span>
+          <span class="category-toggle">−</span>
+
         </div>
         <div class="product-list">
           <div class="product-item">
@@ -919,9 +937,10 @@
         <div class="category-header" onclick="toggleCategory(this)">
           <div class="category-header-left">
             <h2 class="category-name">Rolls/Burgers/Sandwiches</h2>
-            <span class="category-count">7 Items</span>
+            <!-- <span class="category-count">7 Items</span> -->
           </div>
-          <span class="category-toggle">▼</span>
+          <span class="category-toggle">−</span>
+
         </div>
         <div class="product-list">
           <div class="product-item">
@@ -1005,9 +1024,9 @@
         <div class="category-header" onclick="toggleCategory(this)">
           <div class="category-header-left">
             <h2 class="category-name">Puffs</h2>
-            <span class="category-count">5 Items</span>
+            <!-- <span class="category-count">5 Items</span> -->
           </div>
-          <span class="category-toggle">▼</span>
+          <span class="category-toggle">−</span>
         </div>
         <div class="product-list">
           <div class="product-item">
@@ -1071,9 +1090,9 @@
         <div class="category-header" onclick="toggleCategory(this)">
           <div class="category-header-left">
             <h2 class="category-name">Premium Pastry</h2>
-            <span class="category-count">12 Items</span>
+            <!-- <span class="category-count">12 Items</span> -->
           </div>
-          <span class="category-toggle">▼</span>
+          <span class="category-toggle">−</span>
         </div>
         <div class="product-list">
           <div class="product-item">
@@ -1207,9 +1226,9 @@
         <div class="category-header" onclick="toggleCategory(this)">
           <div class="category-header-left">
             <h2 class="category-name">Tea Cakes</h2>
-            <span class="category-count">6 Items</span>
+            <!-- <span class="category-count">6 Items</span> -->
           </div>
-          <span class="category-toggle">▼</span>
+          <span class="category-toggle">−</span>
         </div>
         <div class="product-list">
           <div class="product-item">
@@ -1283,9 +1302,9 @@
         <div class="category-header" onclick="toggleCategory(this)">
           <div class="category-header-left">
             <h2 class="category-name">Cookies</h2>
-            <span class="category-count">4 Items</span>
+            <!-- <span class="category-count">4 Items</span> -->
           </div>
-          <span class="category-toggle">▼</span>
+          <span class="category-toggle">−</span>
         </div>
         <div class="product-list">
           <div class="product-item">
@@ -1339,9 +1358,9 @@
         <div class="category-header" onclick="toggleCategory(this)">
           <div class="category-header-left">
             <h2 class="category-name">Cream Rolls</h2>
-            <span class="category-count">2 Items</span>
+            <!-- <span class="category-count">2 Items</span> -->
           </div>
-          <span class="category-toggle">▼</span>
+          <span class="category-toggle">−</span>
         </div>
         <div class="product-list">
           <div class="product-item">
@@ -1381,7 +1400,7 @@
       <p class="section-subtitle">A legacy baked in every bite</p>
 
       <p class="about-text">
-        New Poona Bakery has been serving Pune with iconic baked delights since 1959, known for freshness, taste and tradition. Three generations of passion and craft — in every loaf, biscuit, and cake we make.
+        New Poona Bakery has been serving Pune with iconic baked delights since 1959, known for freshness, taste and tradition. Three generations of passion and craft in every loaf, biscuit, and cake we make.
       </p>
 
       <!-- Key stats -->
@@ -1415,22 +1434,23 @@
 
       <div class="store-card">
 
-        <!-- Map visual placeholder -->
-        <div class="store-map-placeholder" aria-hidden="true">
-          <span class="map-pin-icon">📍</span>
-        </div>
+        <!-- Map visual -->
+          <div class="store-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1890.6724104779028!2d73.7454932444275!3d18.603553999999995!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b97d7e00857b%3A0x850fe751ce4476e9!2sNew%20Poona%20Bakery%20(%20Superstore%20Factory%20Outlet%20)!5e0!3m2!1sen!2sin!4v1771438266665!5m2!1sen!2sin" width="600" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
 
         <div class="store-body">
           <div class="store-name">New Poona Bakery</div>
 
           <div class="store-address">
-            <strong>Main Branch</strong>
-            123, Example Street, Camp Area,<br />
-            Pune – 411001, Maharashtra, India
+            <strong>Superstore</strong>
+            Bhumkar Das Gugre Rd, Bhumkar Nagar, Wakad,<br />
+            Pimpri-Chinchwad, Maharashtra 411057
           </div>
 
           <a
-            href="#"
+            href="https://share.google/4NBFutzFqOM2C1poQ"
             class="btn-maps"
             target="_blank"
             rel="noopener noreferrer"
@@ -1448,16 +1468,64 @@
             <div class="hours-title">Store Hours</div>
             <div class="hours-row">
               <span class="hours-day">Mon – Sat</span>
-              <span class="hours-time hours-open">7:00 AM – 9:00 PM</span>
+              <span class="hours-time hours-open">8:30 AM – 10:30 PM</span>
             </div>
-            <div class="hours-row">
+            <!-- <div class="hours-row">
               <span class="hours-day">Sunday</span>
               <span class="hours-time hours-open">7:00 AM – 8:00 PM</span>
-            </div>
+            </div> -->
           </div>
-
+          
         </div>
       </div>
+
+            <div class="store-card">
+
+        <!-- Map visual -->
+          <div class="store-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.2623030370173!2d73.85477139999999!3d18.5170451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c06fe8fa6307%3A0x84eae2544421bcbb!2sNew%20Poona%20Bakery!5e0!3m2!1sen!2sin!4v1771500674829!5m2!1sen!2sin" width="600" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+
+        <div class="store-body">
+          <div class="store-name">New Poona Bakery</div>
+
+          <div class="store-address">
+            <strong>Main Store</strong>
+            Appa Balwant Chowk, Budhwar Peth,<br />
+            Pune, Maharashtra 411002
+          </div>
+
+          <a
+            href="https://share.google/3AXgPcfbY6rJAa0Cr"
+            class="btn-maps"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open store location in Google Maps"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Open in Google Maps
+          </a>
+
+          <!-- Store timings -->
+          <div class="store-hours" aria-label="Store hours">
+            <div class="hours-title">Store Hours</div>
+            <div class="hours-row">
+              <span class="hours-day">Mon – Sat</span>
+              <span class="hours-time hours-open">6:30 AM – 9:30 PM</span>
+            </div>
+            <!-- <div class="hours-row">
+              <span class="hours-day">Sunday</span>
+              <span class="hours-time hours-open">7:00 AM – 8:00 PM</span>
+            </div> -->
+          </div>
+          
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1475,7 +1543,7 @@
       <div class="social-icons" role="list">
 
         <a
-          href="#"
+          href="https://www.instagram.com/newpoonabakery/?hl=en"
           class="social-btn"
           target="_blank"
           rel="noopener noreferrer"
@@ -1493,7 +1561,7 @@
         </a>
 
         <a
-          href="#"
+          href="https://www.facebook.com/NewPoonaBakery/"
           class="social-btn"
           target="_blank"
           rel="noopener noreferrer"
@@ -1509,7 +1577,7 @@
         </a>
 
         <a
-          href="#"
+          href="https://share.google/3AXgPcfbY6rJAa0Cr"
           class="social-btn"
           target="_blank"
           rel="noopener noreferrer"
@@ -1537,7 +1605,7 @@
           Your review helps us serve Pune better.<br />Takes only 30 seconds — means the world to us!
         </p>
         <a
-          href="#"
+          href="https://g.page/r/Cbu8IURU4uqEEAE/review"
           class="btn-review"
           target="_blank"
           rel="noopener noreferrer"
@@ -1564,7 +1632,7 @@
     <strong>New Poona Bakery</strong>
     <span class="wavy-divider" aria-hidden="true">✦ ✦ ✦</span>
     <p>© <span class="footer-year">1959</span> – 2025 · Pune, Maharashtra</p>
-    <p style="margin-top:6px; font-size:0.72rem; opacity:0.7;">Made with love & baked with tradition</p>
+   <a href="https://ideaclicks.in/"><p style="margin-top:6px; font-size:0.72rem; opacity:0.7;">Created by IdeaClicks </a></p>
   </footer>
 
 
@@ -1577,13 +1645,24 @@
     /* ─────────────────────────────────────────────
        1. TOGGLE CATEGORY (Expand/Collapse)
     ──────────────────────────────────────────────── */
-    function toggleCategory(header) {
-      header.classList.toggle('collapsed');
-      const productList = header.nextElementSibling;
-      if (productList) {
-        productList.classList.toggle('collapsed');
-      }
-    }
+function toggleCategory(header) {
+  header.classList.toggle('collapsed');
+
+  const productList = header.nextElementSibling;
+  const icon = header.querySelector('.category-toggle');
+
+  if (productList) {
+    productList.classList.toggle('collapsed');
+  }
+
+  // Toggle + / -
+  if (icon.textContent === "+") {
+    icon.textContent = "−";
+  } else {
+    icon.textContent = "+";
+  }
+}
+
 
     /* ─────────────────────────────────────────────
        2. STICKY CATEGORY NAV - Active State on Scroll
@@ -1604,9 +1683,17 @@
               catLinks.forEach(link => link.classList.remove('active'));
               // Add active to matching link
               const activeLink = document.querySelector(`.cat-link[href="#${id}"]`);
-              if (activeLink) {
-                activeLink.classList.add('active');
-              }
+             if (activeLink) {
+  activeLink.classList.add('active');
+
+  // 🔥 Auto scroll the horizontal nav
+  activeLink.scrollIntoView({
+    behavior: "smooth",
+    inline: "center",
+    block: "nearest"
+  });
+}
+
             }
           });
         },
